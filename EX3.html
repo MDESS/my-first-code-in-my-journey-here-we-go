@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EX3</title>
+	<script>
+		var input = prompt("type a text");
+		function encrypt(input) {
+	    function mod(a, b) {
+	        return ((a % b) + b) % b;
+	    }
+	 
+	    function encryptChar(char) {
+	        let code = char.charCodeAt(0);
+	        //lowercase
+	        if (code >= 97 && code <= 122) {
+	            return String.fromCharCode(((code - 97 + 3) % 26) + 97);
+	        }
+	        //uppercase
+	        else if (code >= 65 && code <= 90) {
+	            return String.fromCharCode(mod(code - 5 - 65, 26) + 65);
+	        }
+	        //other
+	        else {
+	            return '.';
+	        }
+	    }
+	 
+	    return input
+	        .split('')
+	        .map((char) => encryptChar(char))
+	        .join('');
+	}
+	document.write(encrypt(input));
+	</script>
+</head>
+<body>
+</body>
+</html>
